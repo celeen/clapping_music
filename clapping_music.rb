@@ -23,15 +23,15 @@ def log(part2)
   puts "2: #{part2}"
 end
 
-def play_pattern(pattern, voice)
+def play_measure(pattern, voice)
   pattern.each do |value|
     value == 1 ? play_note(voice) : play_rest
   end
 end
 
-def play_section(pattern, voice, n)
-  n.times do
-    play_pattern(pattern, voice)
+def play_section(pattern, voice)
+  4.times do
+    play_measure(pattern, voice)
   end
 end
 
@@ -39,14 +39,14 @@ def both_parts_play_section(part2)
   log(part2)
 
   in_thread do
-    play_section(@baseline, @voice1, 4)
+    play_section(@baseline, @voice1)
   end
 
-  play_section(part2, @voice2, 4)
+  play_section(part2, @voice2)
 end
 
 def play_recursive_bit(rotating_part)
-  play_section(rotating_part)
+  both_parts_play_section(rotating_part)
 
   return if rotating_part == @baseline
 
