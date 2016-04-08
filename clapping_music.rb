@@ -1,3 +1,5 @@
+# "Clapping Music" by Steve Reich
+
 use_bpm 75
 use_debug false
 load_sample :drum_tom_hi_hard
